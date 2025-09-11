@@ -1,0 +1,32 @@
+services:
+  app:
+    image: bigbear
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    networks:
+      - app-network
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: base
+      MYSQL_USER: kdev
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/data:/var/lib/mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
