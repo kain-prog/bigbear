@@ -24,7 +24,7 @@ export default function Banner() {
                         <span className="px-3 py-1 rounded-full bg-[#e9fbfa] text-[#04524f] font-semibold text-sm">Em breve entraremos em contato</span>
                     </div>
 
-                    {/* Social proof */}
+                    {/* Social */}
                     <div className="mt-6 flex items-center gap-3 text-sm">
                         {[1,2,3].map(i=> (
                             <div key={i} className="size-8 rounded-full border-3 border-[#1731331a] border-primary bg-white" />
@@ -33,7 +33,7 @@ export default function Banner() {
                     </div>
                 </div>
 
-                {/* Visual */}
+                {/* Mockup */}
                 <div className="hidden md:block relative min-h-72">
                     <div className="absolute right-0 top-6 p-5 rounded-2xl border border-[#17313314] bg-white/70 backdrop-blur shadow-[0_18px_60px_rgba(8,36,39,.1)]">
                         <div className="w-72 h-44 rounded-xl bg-gradient-to-br from-white to-[#eef7f6] grid place-items-center text-sm text-[#2a5457]">
@@ -46,7 +46,7 @@ export default function Banner() {
                             />
                         </div>
                     </div>
-                    <div className="absolute -right-8 bottom-0 w-80 h-80 rounded-full blur-2xl" style={{background:"radial-gradient(circle at 30% 30%, rgba(4,207,198,.6), transparent 50%), radial-gradient(circle at 60% 50%, rgba(15,178,171,.5), transparent 50%)"}} />
+                    <div className="absolute right-0 bottom-0 w-80 h-80 rounded-full blur-2xl" style={{background:"radial-gradient(circle at 30% 30%, rgba(4,207,198,.6), transparent 50%), radial-gradient(circle at 60% 50%, rgba(15,178,171,.5), transparent 50%)"}} />
                 </div>
             </div>
         </section>

@@ -8,7 +8,7 @@ export default function Services(){
             },{
             t:'Sem dor de cabeça', d:'Atendimento direto no WhatsApp até a aprovação final.'
             }].map((b,i)=> (
-            <article key={i} className="p-5 rounded-2xl bg-white shadow-md shadow-primary/60 border border-primary/20">
+            <article key={i} className="p-5 rounded-2xl bg-white shadow-md shadow-primary/30 border border-primary/20 ">
                 <h3 className="font-semibold text-lg text-slate-900">{b.t}</h3>
                 <p className="text-slate-900 mt-1">{b.d}</p>
             </article>
