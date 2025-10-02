@@ -22,8 +22,6 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${encodeSans.variable}`}>
-        <Header/>
-        <Strip/>
         {children}
       </body>
     </html>

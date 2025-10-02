@@ -1,9 +1,17 @@
+import Link from "next/link";
+
 export default function Portfolio(){
     return(
         <section id="portfolio" className="px-4 lg:px-8 max-w-screen-2xl mx-auto py-16">
             <div className="flex items-end justify-between mb-8">
                 <h2 className="text-2xl font-bold">Trabalhos recentes</h2>
-                <a href="#instagram" className="text-sm hover:text-primary transition-all duration-300">Ver mais no Instagram →</a>
+                <Link 
+                    className="text-sm hover:text-primary transition-all duration-300"
+                    href={'https://www.instagram.com/bigbear.dg/'} 
+                    target="_blank"
+                >
+                    Ver mais no Instagram →
+                </Link>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {Array.from({length:8}).map((_,i)=> (

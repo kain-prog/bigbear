@@ -1,6 +1,6 @@
-// import Image from "next/image";
-
 import Banner from "@/components/home/Banner";
+import Contact from "@/components/home/Contact";
+import Cta from "@/components/home/Cta";
 import Faq from "@/components/home/Faq";
 import Portfolio from "@/components/home/Portfolio";
 import Proccess from "@/components/home/Proccess";
@@ -14,8 +14,10 @@ export default function Home() {
       <Services />
       <Portfolio />
       <Proccess />
+      <Cta />
       <Testimonials />
       <Faq />
+      <Contact />
     </>
   );
 }

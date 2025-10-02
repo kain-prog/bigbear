@@ -6,7 +6,7 @@ import 'swiper/css';
 
 export default function Testimonials(){
     return(
-        <section className="px-4 lg:px-8 max-w-screen-2xl mx-auto py-16 relative">
+        <section id="depoimentos" className="px-4 lg:px-8 max-w-screen-2xl mx-auto py-16 relative">
             <h2 className="text-2xl font-bold mb-12">O que falam da Big bear?</h2>
 
             <button data-prev="swiper-nav" className="absolute top-36 left-0 transform z-[9999] cursor-pointer">
