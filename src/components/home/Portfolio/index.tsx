@@ -1,6 +1,13 @@
+"use server";
+
+import type Portfolio from "@/app/types/Portfolio";
 import Link from "next/link";
 
-export default function Portfolio(){
+export default async function Portfolio(){
+
+    const response = await fetch(`${process.env.BASE_URL}/api/portfolios?_end=8&_order=ASC&_sort=id&_start=0`);
+    const portfolios = await response.json();
+
     return(
         <section id="portfolio" className="px-4 lg:px-8 max-w-screen-2xl mx-auto py-16">
             <div className="flex items-end justify-between mb-8">
@@ -14,10 +21,14 @@ export default function Portfolio(){
                 </Link>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                {Array.from({length:8}).map((_,i)=> (
-                <div key={i} className="aspect-[4/3] rounded-xl overflow-hidden border border-[#17313314] bg-white hover:shadow-md transition-all duration-150 shadow-primary/30">
-                    <a href={`#${i+1}`} className="w-full h-full grid place-items-center text-sm text-[#2a5457] bg-gradient-to-br from-white to-[#eef7f6]">
-                        Projeto {i+1}
+                {portfolios.map((portfolio: Portfolio, i: number) => (
+                <div key={portfolio.id} className="aspect-[4/3] rounded-xl overflow-hidden border border-[#17313314] bg-white hover:shadow-md transition-all duration-150 shadow-primary/30">
+                    <a href={`${portfolio.url}`} className="w-full h-full grid place-items-center text-sm text-[#2a5457] bg-gradient-to-br from-white to-[#eef7f6]">
+                        {
+                            portfolio.image ? <img src={portfolio.image} alt={portfolio.title} className="w-full h-full object-cover hover:transform hover:scale-105 transition-transform duration-200" /> 
+                            : 
+                            portfolio.title
+                        }
                     </a>
                 </div>
                 ))}

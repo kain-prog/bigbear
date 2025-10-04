@@ -1,13 +1,15 @@
-// src/app/(admin)/admin/AdminContainer.tsx
-
 'use client'; 
 
 import { Admin, Resource } from 'react-admin';
-import simpleRestProvider from 'ra-data-simple-rest';
+import jsonServerProvider from 'ra-data-json-server';
 import PortfolioList from '../portfolios/PortfolioList';
 import { i18nProvider } from './i18nProvider';
+import { PortfolioCreate } from '../portfolios/PortfolioCreate';
+import PortfolioEdit from '../portfolios/PortfolioEdit';
 
-const dataProvider = simpleRestProvider('/api'); 
+const dataProvider = jsonServerProvider(
+    '/api'
+); 
 
 export default function AdminContainer() {
     return (
@@ -18,6 +20,9 @@ export default function AdminContainer() {
             <Resource 
                 name="portfolios" 
                 list={PortfolioList} 
+                create={<PortfolioCreate />}
+                edit={<PortfolioEdit />}
+                recordRepresentation="title"
             />
         </Admin>
     );

@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import AdminContainer from './AdminContainer';
 
 const AdminApp = dynamic(() => import('./AdminContainer'), {
   ssr: false,
