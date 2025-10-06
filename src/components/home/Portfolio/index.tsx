@@ -5,8 +5,26 @@ import Link from "next/link";
 
 export default async function Portfolio(){
 
-    const response = await fetch(`${process.env.BASE_URL}/api/portfolios?_end=8&_order=ASC&_sort=id&_start=0`);
-    const portfolios = await response.json();
+    let portfolios: Portfolio[] = []; 
+
+    try {
+        const apiUrl = `${process.env.BASE_URL}/api/portfolios?_end=8&_order=ASC&_sort=id&_start=0`;
+        const response = await fetch(apiUrl, { next: { revalidate: 3600 } });
+
+        if (!response.ok) {
+            throw new Error(`Falha ao buscar dados: ${response.status} ${response.statusText}`);
+        }
+        
+        portfolios = await response.json();
+
+        if (!Array.isArray(portfolios)) {
+            console.error("Dados recebidos não são um array:", portfolios);
+            portfolios = [];
+        }
+
+    } catch (error) {
+        console.error("Erro no fetch de Portfolios:", error);
+    }
 
     return(
         <section id="portfolio" className="px-4 lg:px-8 max-w-screen-2xl mx-auto py-16">
