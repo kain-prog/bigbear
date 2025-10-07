@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Encode_Sans } from "next/font/google";
-import Header from "@/components/globals/Header";
-import Strip from "@/components/globals/Strip";
 import "./globals.css";
 
 const encodeSans = Encode_Sans({

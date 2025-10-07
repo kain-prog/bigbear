@@ -2,13 +2,12 @@ import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { put } from '@vercel/blob';
 import * as crypto from 'crypto';
-import Context from '@/app/types/Context';
 
 const client = new PrismaClient();
 
-export async function GET(request: Request, { params }: Context ) {
-    
-    const { id } = params;
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
+
+    const { id } = await params;
 
     if (!id) {
         return NextResponse.json({ error: 'ID do projeto é obrigatório.' }, { status: 400 });
@@ -31,9 +30,9 @@ export async function GET(request: Request, { params }: Context ) {
     }
 }
 
-export async function PUT(request: Request, { params }: Context ) {
-    
-    const { id } = params;
+export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
+
+    const { id } = await params;
 
     if (!id) {
         return NextResponse.json({ error: 'ID do projeto é obrigatório.' }, { status: 400 });
