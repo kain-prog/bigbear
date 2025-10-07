@@ -5,9 +5,34 @@ import * as crypto from 'crypto';
 
 const client = new PrismaClient();
 
-export async function PUT(request: Request) {
-    const { searchParams } = new URL(request.url);
-    const id = searchParams.get('id');
+export async function GET(request: Request, { params }: { params: { id: string } }) {
+    
+    const { id } = params;
+
+    if (!id) {
+        return NextResponse.json({ error: 'ID do projeto é obrigatório.' }, { status: 400 });
+    }
+
+    try {
+       
+        const data = await client.project.findFirst({
+            where: { id: id },
+        });
+
+        if (!data) {
+            return NextResponse.json({ error: 'Projeto não encontrado.' }, { status: 404 });
+        }
+
+        return NextResponse.json(data, { status: 200 });
+
+    } catch (error) {
+        return NextResponse.json({ error: 'Erro ao atualizar projeto', details: (error as Error).message }, { status: 500 });
+    }
+}
+
+export async function PUT(request: Request, { params }: { params: { id: string } }) {
+    
+    const { id } = params;
 
     if (!id) {
         return NextResponse.json({ error: 'ID do projeto é obrigatório.' }, { status: 400 });
@@ -55,7 +80,6 @@ export async function PUT(request: Request) {
         return NextResponse.json({ error: 'Erro ao atualizar projeto', details: (error as Error).message }, { status: 500 });
     }
 }
-
 
 export async function DELETE(request: Request) {
     const url = new URL(request.url);
