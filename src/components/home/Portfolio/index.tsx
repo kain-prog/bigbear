@@ -41,7 +41,7 @@ export default async function Portfolio(){
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {portfolios.map((portfolio: Portfolio, i: number) => (
                 <div key={portfolio.id} className="aspect-[4/3] rounded-xl overflow-hidden border border-[#17313314] bg-white hover:shadow-md transition-all duration-150 shadow-primary/30">
-                    <a href={`${portfolio.url}`} className="w-full h-full grid place-items-center text-sm text-[#2a5457] bg-gradient-to-br from-white to-[#eef7f6]">
+                    <a href={`${portfolio.url}`} target="_blank" className="w-full p-5 h-full flex items-center justify-center text-sm text-[#2a5457] bg-gradient-to-br from-white to-[#eef7f6]">
                         {
                             portfolio.image ? <img src={portfolio.image} alt={portfolio.title} className="w-full h-full object-cover hover:transform hover:scale-105 transition-transform duration-200" /> 
                             : 
