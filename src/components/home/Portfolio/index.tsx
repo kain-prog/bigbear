@@ -9,7 +9,7 @@ export default async function Portfolio(){
 
     try {
         const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/portfolios?_end=8&_order=ASC&_sort=id&_start=0`;
-        const response = await fetch(apiUrl, { next: { revalidate: 3600 } });
+        const response = await fetch(apiUrl, { cache: 'no-store' } );
 
         if (!response.ok) {
             throw new Error(`Falha ao buscar dados: ${response.status} ${response.statusText}`);
