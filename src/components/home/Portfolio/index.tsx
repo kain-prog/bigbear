@@ -8,7 +8,7 @@ export default async function Portfolio(){
     let portfolios: Portfolio[] = []; 
 
     try {
-        const apiUrl = `${process.env.BASE_URL}/api/portfolios?_end=8&_order=ASC&_sort=id&_start=0`;
+        const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/portfolios?_end=8&_order=ASC&_sort=id&_start=0`;
         const response = await fetch(apiUrl, { next: { revalidate: 3600 } });
 
         if (!response.ok) {
