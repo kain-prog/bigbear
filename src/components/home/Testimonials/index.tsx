@@ -12,7 +12,7 @@ export default function Testimonials() {
     useEffect(() => {
         async function carregarDepoimentos() {
             try {
-                const response = await fetch('http://admin.bigbear.com.br/api/comments/');
+                const response = await fetch('https://admin.bigbear.com.br/api/comments/');
                 if (!response.ok) throw new Error('Falha ao carregar depoimentos');
 
                 const json = await response.json();
