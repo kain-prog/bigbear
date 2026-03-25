@@ -1,32 +1,38 @@
-"use server";
+"use client";
 
 import type Portfolio from "@/app/types/Portfolio";
 import Link from "next/link";
-import { PrismaClient } from '@prisma/client';
+import { useEffect, useState } from "react";
 
-const client = new PrismaClient();
+export default function Portfolio() {
 
-export default async function Portfolio() {
+    const [portfolios, setPortfolios] = useState([]);
+    const [carregando, setCarregando] = useState(true);
 
-    let portfolios: Portfolio[] = [];
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-    try {
-        // const projects = await client.project.findMany({
-        //     skip: 0,
-        //     take: 8,
-        //     orderBy: { id: 'asc' },
-        // });
+    useEffect(() => {
 
-        // portfolios = projects as unknown as Portfolio[];
+        async function carregarPortfolios() {
+            try {
+                const response = await fetch(`${API_URL}/api/portfolios`);
+                if (!response.ok) throw new Error('Falha ao carregar portfolios');
 
-        const response = await fetch(`${API_URL}/api/portfolios`);
-        const portfolioData = await response.json();
-        portfolios = portfolioData.data;
+                const json = await response.json();
 
-    } catch (error) {
-        console.error("Erro ao buscar projetos:", error);
-    }
+                const portfolios = json.data || [];
+
+                setPortfolios(portfolios);
+            } catch (error) {
+                console.error("Erro ao buscar portfolios da API:", error);
+            } finally {
+                setCarregando(false);
+            }
+        }
+
+        carregarPortfolios();
+    }, []);
+
 
     return (
         <section id="portfolio" className="px-4 lg:px-8 max-w-screen-2xl mx-auto py-16">
@@ -41,7 +47,7 @@ export default async function Portfolio() {
                 </Link>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                {portfolios.map((portfolio: Portfolio, i: number) => (
+                {portfolios.map((portfolio: Portfolio) => (
                     <div key={portfolio.id} className="aspect-[4/3] rounded-xl overflow-hidden border border-[#17313314] bg-white hover:shadow-md transition-all duration-150 shadow-primary/30">
                         <a href={`${portfolio.url}`} target="_blank" className="w-full p-5 h-full flex items-center justify-center text-sm text-[#2a5457] bg-gradient-to-br from-white to-[#eef7f6]">
                             {

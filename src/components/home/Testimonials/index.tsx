@@ -9,10 +9,13 @@ export default function Testimonials() {
     const [depoimentos, setDepoimentos] = useState([]);
     const [carregando, setCarregando] = useState(true);
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
     useEffect(() => {
+
         async function carregarDepoimentos() {
             try {
-                const response = await fetch('https://admin.bigbear.com.br/api/comments/');
+                const response = await fetch(`${API_URL}/api/comments/`);
                 if (!response.ok) throw new Error('Falha ao carregar depoimentos');
 
                 const json = await response.json();
@@ -44,14 +47,14 @@ export default function Testimonials() {
 
             {!carregando && (
                 <>
-                    <button data-prev="swiper-nav" className="absolute top-[50px] right-[80px] transform z-[9999] cursor-pointer hidden md:flex bg-primary p-2 items-center justify-center rounded-full">
+                    <button data-prev="swiper-nav" className="absolute top-[50px] right-[80px] transform z-[9999] cursor-pointer hidden md:flex bg-primary p-2 items-center justify-center rounded-full hover:bg-primary/80 transition-colors duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white lucide lucide-arrow-left-icon lucide-arrow-left">
                             <path d="m12 19-7-7 7-7" />
                             <path d="M19 12H5" />
                         </svg>
                     </button>
 
-                    <button data-next="swiper-nav" className="bg-primary absolute top-[50px] right-[25px] transform z-[9999] cursor-pointer hidden md:flex p-2 items-center justify-center rounded-full">
+                    <button data-next="swiper-nav" className="bg-primary absolute top-[50px] right-[25px] transform z-[9999] cursor-pointer hidden md:flex p-2 items-center justify-center rounded-full hover:bg-primary/80 transition-colors duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="transform rotate-180 text-white lucide lucide-arrow-left-icon lucide-arrow-left">
                             <path d="m12 19-7-7 7-7" />
                             <path d="M19 12H5" />

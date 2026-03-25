@@ -5,10 +5,10 @@ export default function Whatsapp() {
         <Link
             href={'https://wa.me/+5521997951349'}
             target="_blank"
-            className="fixed bottom-4 right-4 z-50"
+            className="fixed bottom-4 right-4 z-50 bg-primary hover:brightness-110 transition-all duration-300 rounded-full border-2 border-white animate-bounce"
         >
 
-            <svg viewBox="0 0 24 24" fill="none" className="bg-primary rounded-full border-2 border-white animate-bounce" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
                 <path d="M12 2C6.48 2 2 6.48 2 12c0 1.95.54 3.79 1.48 5.36L1 23l5.88-1.47A9.87 9.87 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" />
                 <path fill="#FFF" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.65.08-.3-.15-1.26-.47-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.19 1.87.11.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z" />
             </svg>
