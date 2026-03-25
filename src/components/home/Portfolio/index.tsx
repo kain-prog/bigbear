@@ -15,7 +15,7 @@ export default function Portfolio() {
 
         async function carregarPortfolios() {
             try {
-                const response = await fetch(`${API_URL}/api/portfolios`);
+                const response = await fetch(`${API_URL}/api/portfolios/`);
                 if (!response.ok) throw new Error('Falha ao carregar portfolios');
 
                 const json = await response.json();
