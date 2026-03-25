@@ -44,17 +44,17 @@ export default function Testimonials() {
 
             {!carregando && (
                 <>
-                    <button data-prev="swiper-nav" className="absolute top-36 left-0 transform z-[9999] cursor-pointer hidden md:block">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-primary lucide lucide-chevrons-left-icon lucide-chevrons-left">
-                            <path d="m11 17-5-5 5-5" />
-                            <path d="m18 17-5-5 5-5" />
+                    <button data-prev="swiper-nav" className="absolute top-[50px] right-[80px] transform z-[9999] cursor-pointer hidden md:flex bg-primary p-2 items-center justify-center rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white lucide lucide-arrow-left-icon lucide-arrow-left">
+                            <path d="m12 19-7-7 7-7" />
+                            <path d="M19 12H5" />
                         </svg>
                     </button>
 
-                    <button data-next="swiper-nav" className="absolute top-36 right-0 transform z-[9999] cursor-pointer hidden md:block">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-primary lucide lucide-chevrons-right-icon lucide-chevrons-right">
-                            <path d="m6 17 5-5-5-5" />
-                            <path d="m13 17 5-5-5-5" />
+                    <button data-next="swiper-nav" className="bg-primary absolute top-[50px] right-[25px] transform z-[9999] cursor-pointer hidden md:flex p-2 items-center justify-center rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="transform rotate-180 text-white lucide lucide-arrow-left-icon lucide-arrow-left">
+                            <path d="m12 19-7-7 7-7" />
+                            <path d="M19 12H5" />
                         </svg>
                     </button>
                 </>
