@@ -5,7 +5,7 @@ export default function Whatsapp() {
         <Link
             href={'https://wa.me/+5521997951349'}
             target="_blank"
-            className="fixed bottom-4 right-4 z-50 bg-primary hover:brightness-110 transition-all duration-300 rounded-full border-2 border-white animate-bounce"
+            className="fixed bottom-4 right-4 z-50 bg-primary hover:brightness-110 transition-all duration-300 rounded-full border-2 border-white animate-bounce z-[999]"
         >
 
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
