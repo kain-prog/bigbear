@@ -1,7 +1,8 @@
 export default interface Portfolio {
     id: string;
     title: string;
-    image: string;
+    image?: string;
     url: string;
-    createdAt: Date;
+    thumb?: string;
+    createdAt?: Date;
 }
