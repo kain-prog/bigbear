@@ -1,11 +1,47 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Banner() {
-    return (
 
+    const [avatars, setAvatars] = useState([]);
+    const [mediaEstrelas, setMediaEstrelas] = useState("5,0");
+
+    useEffect(() => {
+        async function carregarDadosSociais() {
+            try {
+                const response = await fetch('https://admin.bigbear.com.br/api/comments');
+                const json = await response.json();
+                const avaliacoes = json.data || [];
+
+                const avaliacoesAtivas = avaliacoes.filter((dep: any) => dep.active);
+
+                if (avaliacoesAtivas.length > 0) {
+                    const fotos = avaliacoesAtivas
+                        .filter((dep: any) => dep.avatar)
+                        .map((dep: any) => dep.avatar)
+                        .slice(0, 3);
+
+                    setAvatars(fotos);
+
+                    const somaDasNotas = avaliacoesAtivas.reduce((acumulador: any, atual: any) => acumulador + atual.rating, 0);
+                    const media = somaDasNotas / avaliacoesAtivas.length;
+
+                    setMediaEstrelas(media.toFixed(1).replace('.', ','));
+                }
+            } catch (error) {
+                console.error("Erro ao buscar dados do banner:", error);
+            }
+        }
+
+        carregarDadosSociais();
+    }, []);
+
+    return (
         <>
-            <section className="relative bg-[url('/banner-bigbear.jpg')] bg-cover">
+            <section id="home" className="relative bg-[url('/banner-bigbear.jpg')] bg-cover">
                 <div className="absolute -top-40 left-1/2 right-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] rounded-full bg-[rgba(4,207,198,.18)] blur-3xl" />
                 <div className="px-4 lg:px-8 max-w-screen-2xl mx-auto grid lg:grid-cols-2 gap-10 py-16">
                     <div className="flex flex-col gap-6 justify-center">
@@ -36,30 +72,29 @@ export default function Banner() {
                             <span className="px-3 py-1 rounded-full bg-[#e9fbfa] text-[#04524f] font-semibold text-sm">Em breve entraremos em contato</span>
                         </div>
 
-                        {/* Social */}
                         <div className="mt-6 flex items-center gap-3 text-sm">
-                            {[1, 2, 3].map(i => (
-                                <div key={i} className="size-8 rounded-full border-3 border-[#1731331a] border-primary bg-white" />
-                            ))}
-                            <span>+100 projetos entregues • 4,9★</span>
+                            <div className="flex -space-x-3">
+                                {avatars.length > 0 ? (
+                                    avatars.map((avatar, index) => (
+                                        <img
+                                            key={index}
+                                            src={avatar}
+                                            alt="Avatar cliente"
+                                            referrerPolicy="no-referrer"
+                                            className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm relative"
+                                            style={{ zIndex: 3 - index }}
+                                        />
+                                    ))
+                                ) : (
+                                    [1, 2, 3].map(i => (
+                                        <div key={i} className="size-8 rounded-full border-2 border-white bg-gray-200 relative" style={{ zIndex: 4 - i }} />
+                                    ))
+                                )}
+                            </div>
+
+                            <span className="font-medium text-[#2a5457]">+100 projetos entregues • {mediaEstrelas}★</span>
                         </div>
                     </div>
-
-                    {/* Mockup */}
-                    {/* <div className="hidden md:block relative min-h-72">
-                        <div className="absolute right-0 top-6 p-5 rounded-2xl border border-[#17313314] bg-white/70 backdrop-blur shadow-[0_18px_60px_rgba(8,36,39,.1)]">
-                            <div className="w-72 h-44 rounded-xl bg-gradient-to-br from-white to-[#eef7f6] grid place-items-center text-sm text-[#2a5457]">
-                                <Image
-                                    className="border-transparent rounded-full"
-                                    src="/mockup-tshirt.webp"
-                                    alt="Logo"
-                                    width={300}
-                                    height={300}
-                                />
-                            </div>
-                        </div>
-                        <div className="absolute right-0 bottom-0 w-80 h-80 rounded-full blur-2xl" style={{ background: "radial-gradient(circle at 30% 30%, rgba(4,207,198,.6), transparent 50%), radial-gradient(circle at 60% 50%, rgba(15,178,171,.5), transparent 50%)" }} />
-                    </div> */}
                 </div>
             </section>
         </>

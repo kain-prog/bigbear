@@ -6,9 +6,9 @@ import Link from "next/link";
 import { useState } from "react";
 
 const NAV_LINKS = [
-    { href: "#portfolio", label: "Portfolio" },
+    { href: "#portfolio", label: "Portfólio" },
     { href: "#servicos", label: "Serviços" },
-    { href: "#depoimentos", label: "Depoimentos" },
+    { href: "#testimonials", label: "Depoimentos" },
     { href: "#faq", label: "FAQ" },
 ];
 
@@ -42,7 +42,7 @@ export default function Header() {
                     aria-label="Toggle Menu"
                 >
                     {isMenuOpen ? (
-                        <div className="text-2xl">×</div> 
+                        <div className="text-2xl">×</div>
                     ) : (
                         <div className="text-2xl">☰</div>
                     )}
@@ -58,9 +58,9 @@ export default function Header() {
                             </li>
                         ))}
                         <li>
-                            <Link 
+                            <Link
                                 className="text-slate-50 bg-primary px-4 py-2 border rounded-full hover:font-semibold transition-all duration-300"
-                                href={'https://wa.me/+5521997951349'} 
+                                href={'https://wa.me/+5521997951349'}
                                 target="_blank"
                             >
                                 Orçar agora
@@ -98,8 +98,8 @@ export default function Header() {
                     <ul className="flex flex-col space-y-4">
                         {NAV_LINKS.map(link => (
                             <li key={link.href}>
-                                <Link 
-                                    href={link.href} 
+                                <Link
+                                    href={link.href}
                                     className="text-slate-700 hover:font-semibold transition-all duration-300 text-lg block py-2"
                                     onClick={handleLinkClick}
                                 >
@@ -109,9 +109,9 @@ export default function Header() {
                         ))}
 
                         <li className="pt-4">
-                            <Link 
+                            <Link
                                 className="text-slate-50 bg-primary px-4 py-2 border rounded-full hover:font-semibold transition-all duration-300 block text-center"
-                                href={'https://wa.me/+5521997951349'} 
+                                href={'https://wa.me/+5521997951349'}
                                 target="_blank"
                                 onClick={handleLinkClick}
                             >
@@ -121,11 +121,11 @@ export default function Header() {
                     </ul>
                 </nav>
             </div>
-            
+
             {isMenuOpen && (
-                <div 
-                    className="fixed inset-0 bg-black/50 z-30 md:hidden h-screen" 
-                    onClick={() => setIsMenuOpen(false)} 
+                <div
+                    className="fixed inset-0 bg-black/50 z-30 md:hidden h-screen"
+                    onClick={() => setIsMenuOpen(false)}
                 />
             )}
         </header>

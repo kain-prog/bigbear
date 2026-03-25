@@ -1,7 +1,9 @@
+import Whatsapp from "@/components/globals/Whatsapp";
 import Banner from "@/components/home/Banner";
 import Contact from "@/components/home/Contact";
 import Cta from "@/components/home/Cta";
 import Faq from "@/components/home/Faq";
+import Footer from "@/components/home/Footer";
 import Portfolio from "@/components/home/Portfolio";
 import Proccess from "@/components/home/Proccess";
 import Services from "@/components/home/Services";
@@ -18,6 +20,8 @@ export default function Home() {
       <Testimonials />
       <Faq />
       <Contact />
+      <Footer />
+      <Whatsapp />
     </>
   );
 }
